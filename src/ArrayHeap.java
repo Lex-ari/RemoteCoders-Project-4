@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInterface {
+public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInterface<T>{
 
     private T[] heap; //Array of heap entry
     private int lastIndex; //Index of last entry
@@ -8,10 +8,10 @@ public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInt
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
 
-    public MaxHeap(){
+    public  MaxHeap(){
         this(DEFAULT_CAPACITY); //call next constructor
     }
-    public MaxHeap(int initialCapacity){
+    public  MaxHeap(int initialCapacity){
         if(initialCapacity < DEFAULT_CAPACITY)
             initialCapacity = DEFAULT_CAPACITY;
         else
@@ -65,7 +65,36 @@ public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInt
 
     @Override
     public T removeMax() {
-        return null;
+        checkInitialization();
+        T root = null;
+        if(!isEmpty()){
+            root = heap[1];
+            heap[1] = heap[lastIndex];
+            lastIndex--;
+            reheap(1);
+        }
+        return root;
+    }
+    private void reheap(int rootIndex){
+        boolean done = false;
+        T orphan = heap[rootIndex];
+        int leftChildIndex = 2 * rootIndex;
+
+        while(!done  && (leftChildIndex <= lastIndex)){
+            int largerChildIndex = leftChildIndex;
+            int rightChildIndex = leftChildIndex + 1;
+            if((rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0){ // when the rightChild is bigger than largerChild (rightChild > largerChild)
+                largerChildIndex = rightChildIndex;
+            }if(orphan.compareTo(heap[largerChildIndex]) < 0){ //when rootIndex is larger than largerChild (rootIndex > largerChild)
+                heap[rootIndex] = heap[largerChildIndex];
+                rootIndex = largerChildIndex;
+                leftChildIndex = 2 * rootIndex;
+            }
+            else
+                done = true;
+
+        }
+        heap[rootIndex] = orphan;
     }
 
     @Override
