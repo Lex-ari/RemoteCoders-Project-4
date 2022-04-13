@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInterface {
 
     private T[] heap; //Array of heap entry
@@ -32,7 +34,7 @@ public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInt
 
 
     @Override
-    public void add(T newEntry) {
+    public void add(Comparable newEntry) {
         checkInitialization();
         int newIndex = lastIndex + 1;
         int parentIndex = newIndex / 2;
@@ -41,17 +43,28 @@ public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInt
             newIndex = parentIndex;
             parentIndex = newIndex / 2;
         }
-        heap[newIndex] = newEntry;
+        heap[newIndex] = (T) newEntry;
         lastIndex++;
         ensureCapacity();
     }
 
-    private void checkInitialization() {
+    private void ensureCapacity() {
+        if(!isEmpty()){
+            int newLength = 2 * heap.length;
+            checkCapacity(newLength);
+            heap = Arrays.copyOf(heap, newLength);
 
+        }
+    }
+
+    private void checkInitialization() {
+        if(initialized){
+            throw new SecurityException("Uninitialized object used");
+        }
     }
 
     @Override
-    public Comparable removeMax() {
+    public T removeMax() {
         return null;
     }
 
@@ -60,7 +73,7 @@ public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInt
         checkInitialization();
         T root = null;
         if(isEmpty())
-            root = heap(1);
+            root = heap[1];
         return root;
 
     }
