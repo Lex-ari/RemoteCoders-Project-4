@@ -18,7 +18,6 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
             checkCapacity(initialCapacity);
 
 
-
         @SuppressWarnings("unchecked")
         T[] tempHeap = (T[]) new Comparable[initialCapacity + 1];
         heap = tempHeap;
@@ -28,7 +27,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
 
     private void checkCapacity(int initialCapacity) {
         if(initialCapacity > MAX_CAPACITY){
-            throw new IllegalStateException("The capacity is in the Heap is too big");
+            throw new IllegalStateException("The capacity is in this Heap is too big");
         }
     }
 
@@ -75,26 +74,32 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
         return root;
     }
-    private void reheap(int rootIndex){
+
+    private int reheap(int rootIndex){
         boolean done = false;
         T orphan = heap[rootIndex];
         int leftChildIndex = 2 * rootIndex;
+        int count = 0; //counter for swap
 
         while(!done  && (leftChildIndex <= lastIndex)){
             int largerChildIndex = leftChildIndex;
             int rightChildIndex = leftChildIndex + 1;
             if((rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0){ // when the rightChild is bigger than largerChild (rightChild > largerChild)
                 largerChildIndex = rightChildIndex;
+                count++;
             }if(orphan.compareTo(heap[largerChildIndex]) < 0){ //when rootIndex is larger than largerChild (rootIndex > largerChild)
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
                 leftChildIndex = 2 * rootIndex;
+                count++;
             }
             else
                 done = true;
 
         }
         heap[rootIndex] = orphan;
+
+        return count;
     }
 
     @Override
