@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public final class ArrayHeap<T extends Comparable<? super T>> implements HeapInterface<T>{
+public final class MaxHeap<T extends Comparable<? super T>> implements HeapInterface<T>{
 
     private T[] heap; //Array of heap entry
     private int lastIndex; //Index of last entry

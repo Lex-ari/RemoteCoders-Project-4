@@ -21,7 +21,7 @@ public class DriverHeap {
     }
 
 
-    public static String getFirst10(ArrayHeap heap){
+    public static String getFirst10(MaxHeap heap){
         // code that traverses through the array and retrives the first 10 elements.
 
         return "not finished";
