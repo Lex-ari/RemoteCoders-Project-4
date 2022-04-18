@@ -17,6 +17,13 @@ public class DriverHeap {
 
 
 
+
+
+
+
+
+
+
         System.out.println("Heap built using optimal method: "); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: " );
         for (int i = 0; i < 10; i++){
@@ -28,11 +35,16 @@ public class DriverHeap {
 
 
         //sorted data
+        ArrayList<Integer> arr2 = new ArrayList<Integer>();
         File data2 = new File("src/data_sorted.txt");
-        textReader = new Scanner(data2);
+        Scanner textReader2 = new Scanner(data2);
         while (textReader.hasNext()){
-            //add this to heap using optimal method
+            //add this to heap using optimal
+            int j = textReader2.nextInt();
+            arr2.add(j);
         }
+
+
         System.out.println("Heap built using optimal method: "); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: ");
         for (int i = 0; i < 10; i++){
