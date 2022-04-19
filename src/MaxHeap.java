@@ -30,7 +30,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
 
     private void checkCapacity(int initialCapacity) {
         if(initialCapacity > MAX_CAPACITY){
-            throw new IllegalStateException("The capacity is in this Heap is too big");
+            throw new IllegalStateException("The Heap capacity is too big");
         }
     }
 
@@ -47,20 +47,22 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
         heap[newIndex] = (T) newEntry;
         lastIndex++;
-        ensureCapacity(heap.length);
+        ensureCapacity();
     }
 
-    private void ensureCapacity(int capacity) {
-        if(!isEmpty()){
-            capacity = 2 * heap.length;
-            checkCapacity(capacity);
-            heap = Arrays.copyOf(heap, capacity);
+    private void ensureCapacity() {
+        if(lastIndex >= heap.length){
+            int newCapacity = 2 * heap.length;
+            checkCapacity(newCapacity);
+            heap = Arrays.copyOf(heap, newCapacity);
         }
     }
 
 
     private void checkInitialization() {
-            throw new SecurityException("Uninitialized object used");
+            if(!initialized){
+                throw new SecurityException("Maxheap is not initialized property");
+            }
     }
 
     @Override
