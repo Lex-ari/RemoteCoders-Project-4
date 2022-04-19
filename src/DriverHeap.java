@@ -20,8 +20,7 @@ public class DriverHeap {
         System.out.println("Heap built using optimal method: "); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: " );
         for (int i = 0; i < 10; i++){
-            //do remove 10() times
-
+            simpleHeap.removeMax();
         }
 
         System.out.println ("Heap after 10 removals: ");
