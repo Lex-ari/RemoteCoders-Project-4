@@ -31,8 +31,9 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
 
 
     @Override
-    public void add(T newEntry)
+    public int add(T newEntry)
     {
+        int counter = 0;
         checkInitialization();
         int newIndex = lastIndex + 1;
         int parentIndex = newIndex / 2;
@@ -41,11 +42,13 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
             heap[newIndex] = heap[parentIndex];
             newIndex = parentIndex;
             parentIndex = newIndex / 2;
+            counter++;
         }
 
         heap[newIndex] = newEntry;
         lastIndex++;
         ensureCapacity();
+        return counter;
     }
 
     private void ensureCapacity() {
