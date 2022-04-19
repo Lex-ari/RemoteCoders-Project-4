@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class DriverHeap {
@@ -17,7 +18,7 @@ public class DriverHeap {
             simpleHeap.add(i);
         }
 
-        System.out.println("Heap built using optimal method: "); //call getFirst10()
+        System.out.println("Heap built using optimal method: " + getFirst10(simpleHeap)); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: " );
         for (int i = 0; i < 10; i++){
             simpleHeap.removeMax();
@@ -45,8 +46,14 @@ public class DriverHeap {
     }
 
     public static String getFirst10(MaxHeap heap){
-        // code that traverses through the array and retrives the first 10 elements.
-
-        return "not finished";
+        Comparable[] workingArray = heap.toArray();
+        String returnString = "";
+        for (int i = 1; i <= 10; i++){
+            returnString += workingArray[i];
+            if (i < 10){
+                returnString += " ";
+            }
+        }
+        return returnString;
     }
 }
