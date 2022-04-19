@@ -9,20 +9,13 @@ public class DriverHeap {
         File data = new File("src/data_random.txt");
         Scanner textReader = new Scanner(data);
         ArrayList<Integer> arr = new ArrayList<Integer>();
+        MaxHeap<Integer> simpleHeap = new MaxHeap(); // default capcaity
         while(textReader.hasNext()){
             //add this to heap using initial method
             Integer i = textReader.nextInt();
             arr.add(i);
+            simpleHeap.add(i);
         }
-
-
-
-
-
-
-
-
-
 
         System.out.println("Heap built using optimal method: "); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: " );
@@ -32,7 +25,6 @@ public class DriverHeap {
         }
 
         System.out.println ("Heap after 10 removals: ");
-
 
         //sorted data
         ArrayList<Integer> arr2 = new ArrayList<Integer>();
@@ -44,7 +36,6 @@ public class DriverHeap {
             arr2.add(j);
         }
 
-
         System.out.println("Heap built using optimal method: "); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: ");
         for (int i = 0; i < 10; i++){
@@ -53,7 +44,6 @@ public class DriverHeap {
         System.out.println ("Heap after 10 removals: ");
 
     }
-
 
     public static String getFirst10(MaxHeap heap){
         // code that traverses through the array and retrives the first 10 elements.
