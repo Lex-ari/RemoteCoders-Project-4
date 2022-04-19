@@ -24,6 +24,9 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         lastIndex = 0;
         initialized = true;
     }
+    public MaxHeap(T[] entries){
+        // implementation of optimal method
+    }
 
     private void checkCapacity(int initialCapacity) {
         if(initialCapacity > MAX_CAPACITY){
