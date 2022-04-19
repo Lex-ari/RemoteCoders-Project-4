@@ -134,4 +134,9 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
         lastIndex = 0;
     }
+
+    public T[] toArray(){
+        T[] returnArray = Arrays.copyOf(heap, heap.length);
+        return returnArray;
+    }
 }
