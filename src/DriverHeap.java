@@ -9,12 +9,10 @@ public class DriverHeap {
 
         File data = new File("src/data_random.txt");
         Scanner textReader = new Scanner(data);
-        ArrayList<Integer> arr = new ArrayList<Integer>();
         MaxHeap<Integer> simpleHeap = new MaxHeap(); // default capcaity
         while(textReader.hasNext()){
             //add this to heap using initial method
             Integer i = textReader.nextInt();
-            arr.add(i); //adding element to the array
             simpleHeap.add(i);
         }
 

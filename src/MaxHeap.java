@@ -28,24 +28,22 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         // implementation of optimal method
     }
 
-    private void checkCapacity(int initialCapacity) {
-        if(initialCapacity > MAX_CAPACITY){
-            throw new IllegalStateException("The Heap capacity is too big");
-        }
-    }
 
 
     @Override
-    public void add(Comparable newEntry) {
+    public void add(T newEntry)
+    {
         checkInitialization();
         int newIndex = lastIndex + 1;
         int parentIndex = newIndex / 2;
-        while((parentIndex > 0) && newEntry.compareTo(heap[parentIndex])> 0){
+        while ( (parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0)
+        {
             heap[newIndex] = heap[parentIndex];
             newIndex = parentIndex;
             parentIndex = newIndex / 2;
         }
-        heap[newIndex] = (T) newEntry;
+
+        heap[newIndex] = newEntry;
         lastIndex++;
         ensureCapacity();
     }
@@ -133,6 +131,13 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
             lastIndex--;
         }
         lastIndex = 0;
+    }
+    private void checkCapacity(int capacity) {
+        if (capacity < DEFAULT_CAPACITY) {
+            capacity = DEFAULT_CAPACITY;
+        } else if (capacity > MAX_CAPACITY) {
+            throw new IllegalStateException("the capacity is larger than: " + MAX_CAPACITY);
+        }
     }
 
     public T[] toArray(){
