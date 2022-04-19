@@ -14,7 +14,7 @@ public class DriverHeap {
         while(textReader.hasNext()){
             //add this to heap using initial method
             Integer i = textReader.nextInt();
-            arr.add(i);
+            arr.add(i); //adding element to the array
             simpleHeap.add(i);
         }
 
@@ -33,7 +33,7 @@ public class DriverHeap {
         while (textReader.hasNext()){
             //add this to heap using optimal
             int j = textReader2.nextInt();
-            arr2.add(j);
+            arr2.add(j); //adding element to the array
         }
 
         System.out.println("Heap built using optimal method: "); //call getFirst10()

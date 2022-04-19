@@ -47,22 +47,20 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
         heap[newIndex] = (T) newEntry;
         lastIndex++;
-        ensureCapacity();
+        ensureCapacity(heap.length);
     }
 
-    private void ensureCapacity() {
+    private void ensureCapacity(int capacity) {
         if(!isEmpty()){
-            int newLength = 2 * heap.length;
-            checkCapacity(newLength);
-            heap = Arrays.copyOf(heap, newLength);
-
+            capacity = 2 * heap.length;
+            checkCapacity(capacity);
+            heap = Arrays.copyOf(heap, capacity);
         }
     }
+
 
     private void checkInitialization() {
-        if(initialized){
             throw new SecurityException("Uninitialized object used");
-        }
     }
 
     @Override
