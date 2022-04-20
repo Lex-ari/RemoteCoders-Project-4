@@ -26,13 +26,19 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         initialized = true;
     }
     public MaxHeap(T[] entries){
-        int lastIndex = entries.length;
+        checkCapacity(entries.length);
+
+        lastIndex = entries.length;
+
         for(int i = 0; i < lastIndex; i++){
             this.add(entries[i]);
         }
         for(int i = lastIndex / 2; i > 0; i--){
             reheap(i);
         }
+
+        initialized = true;
+
     }
 
 
