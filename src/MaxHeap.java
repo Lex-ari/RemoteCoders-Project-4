@@ -4,6 +4,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
 
     private T[] heap; //Array of heap entry
     private int lastIndex; //Index of last entry
+    private int swaps;
     private boolean initialized = false;
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
@@ -25,7 +26,13 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         initialized = true;
     }
     public MaxHeap(T[] entries){
-        // implementation of optimal method
+        int lastIndex = entries.length;
+        for(int i = 0; i < lastIndex; i++){
+            this.add(entries[i]);
+        }
+        for(int i = lastIndex / 2; i > 0; i--){
+            reheap(i);
+        }
     }
 
 
@@ -33,7 +40,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
     @Override
     public int add(T newEntry)
     {
-        int counter = 0;
+        swaps = 0;
         checkInitialization();
         int newIndex = lastIndex + 1;
         int parentIndex = newIndex / 2;
@@ -42,13 +49,13 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
             heap[newIndex] = heap[parentIndex];
             newIndex = parentIndex;
             parentIndex = newIndex / 2;
-            counter++;
+            swaps++;
         }
 
         heap[newIndex] = newEntry;
         lastIndex++;
         ensureCapacity();
-        return counter;
+        return swaps;
     }
 
     private void ensureCapacity() {
@@ -79,31 +86,32 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         return root;
     }
 
-    private int reheap(int rootIndex){
+    private void reheap(int rootIndex){
         boolean done = false;
         T orphan = heap[rootIndex];
         int leftChildIndex = 2 * rootIndex;
-        int count = 0; //counter for swap
+        swaps = 0; //counter for swap
 
         while(!done  && (leftChildIndex <= lastIndex)){
             int largerChildIndex = leftChildIndex;
             int rightChildIndex = leftChildIndex + 1;
             if((rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0){ // when the rightChild is bigger than largerChild (rightChild > largerChild)
                 largerChildIndex = rightChildIndex;
-                count++;
+                swaps++;
             }if(orphan.compareTo(heap[largerChildIndex]) < 0){ //when rootIndex is larger than largerChild (rootIndex > largerChild)
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
                 leftChildIndex = 2 * rootIndex;
-                count++;
+                swaps++;
             }
             else
                 done = true;
 
         }
         heap[rootIndex] = orphan;
-
-        return count;
+    }
+    public int getSwaps(){
+        return swaps;
     }
 
     @Override
