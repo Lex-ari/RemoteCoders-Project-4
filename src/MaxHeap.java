@@ -40,7 +40,6 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
     @Override
     public int add(T newEntry)
     {
-        swaps = 0;
         checkInitialization();
         int newIndex = lastIndex + 1;
         int parentIndex = newIndex / 2;
@@ -90,7 +89,6 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         boolean done = false;
         T orphan = heap[rootIndex];
         int leftChildIndex = 2 * rootIndex;
-        swaps = 0; //counter for swap
 
         while(!done  && (leftChildIndex <= lastIndex)){
             int largerChildIndex = leftChildIndex;
@@ -111,7 +109,9 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         heap[rootIndex] = orphan;
     }
     public int getSwaps(){
-        return swaps;
+        int temp = swaps;
+        swaps = 0;
+        return temp;
     }
 
     @Override
