@@ -6,7 +6,7 @@ Contributions
 
 Koki Yamaguchi: 
 
-Iker Goni: 
+Iker Goni: Implemented the optimal constructor for maxheap, debugged, added comments and javadoc comments
 
 Alex Mariano: 
 
