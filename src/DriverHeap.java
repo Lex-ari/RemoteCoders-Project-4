@@ -31,14 +31,14 @@ public class DriverHeap {
         output.write("Heap after 10 removals: " + getFirst10(simpleHeap) + "\n");
 
         ArrayList<Integer> arr2 = new ArrayList<Integer>();
-        File data2 = new File("src/data_random.txt");
-        Scanner textReader2 = new Scanner(data2);
+        textReader = new Scanner(data);
         MaxHeap<Integer> optimalHeap;
         while (textReader.hasNext()){
             //add this to heap using optimal
-            int j = textReader2.nextInt();
+            int j = textReader.nextInt();
             arr2.add(j); //adding element to the array
         }
+        System.out.println(arr2.size());
         optimalHeap = new MaxHeap(arr2.toArray(new Integer[0]));
 
         System.out.println("Heap built using optimal method: " + getFirst10(optimalHeap)); //call getFirst10()
