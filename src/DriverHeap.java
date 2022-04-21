@@ -24,17 +24,18 @@ public class DriverHeap {
 
         System.out.println ("Heap after 10 removals: ");
 
-        //sorted data
         ArrayList<Integer> arr2 = new ArrayList<Integer>();
-        File data2 = new File("src/data_sorted.txt");
+        File data2 = new File("src/data_random.txt");
         Scanner textReader2 = new Scanner(data2);
+        MaxHeap<Integer> optimalHeap;
         while (textReader.hasNext()){
             //add this to heap using optimal
             int j = textReader2.nextInt();
             arr2.add(j); //adding element to the array
         }
+        optimalHeap = new MaxHeap(arr2.toArray(new Integer[0]));
 
-        System.out.println("Heap built using optimal method: "); //call getFirst10()
+        System.out.println("Heap built using optimal method: " + getFirst10(optimalHeap)); //call getFirst10()
         System.out.println("Number of swaps in the heap creation: ");
         for (int i = 0; i < 10; i++){
             // do remove() 10 times

@@ -64,7 +64,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
     }
 
     private void ensureCapacity() {
-        if(lastIndex >= heap.length){
+        if(lastIndex >= heap.length - 1){
             int newCapacity = 2 * heap.length;
             checkCapacity(newCapacity);
             heap = Arrays.copyOf(heap, newCapacity);
