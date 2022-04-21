@@ -9,9 +9,17 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
 
+    /**
+     * Default constructor, creates an empty heap with defaults.
+     */
     public  MaxHeap(){
         this(DEFAULT_CAPACITY); //call next constructor
     }
+
+    /**
+     * Default constructor, creates an empty heap with an initial capacity.
+     * @param initialCapacity array size allocated for the heap array.
+     */
     public  MaxHeap(int initialCapacity){
         if(initialCapacity < DEFAULT_CAPACITY)
             initialCapacity = DEFAULT_CAPACITY;
@@ -25,6 +33,11 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         lastIndex = 0;
         initialized = true;
     }
+
+    /**
+     * Optimal method constructor. Takes in an array and calls reheap().
+     * @param entries array to create a heap of.
+     */
     public MaxHeap(T[] entries){
         this(entries.length);
         checkCapacity(entries.length);
@@ -62,6 +75,9 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         return swaps;
     }
 
+    /**
+     * Ensures that there is always space in the heap array. If array gets filled, simply doubles the array.
+     */
     private void ensureCapacity() {
         if(lastIndex >= heap.length - 1){
             int newCapacity = 2 * heap.length;
@@ -70,7 +86,9 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
     }
 
-
+    /**
+     * Ensures that heap has been initialized properly w/o errors.
+     */
     private void checkInitialization() {
             if(!initialized){
                 throw new SecurityException("Maxheap is not initialized property");
@@ -90,6 +108,10 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         return root;
     }
 
+    /**
+     * Uses a root node and compares to it's "largest" child. Swaps when necessary, and repeats for the swapped node.
+     * @param rootIndex root node to start comparing children from
+     */
     private void reheap(int rootIndex){
         boolean done = false;
         T orphan = heap[rootIndex];
@@ -149,6 +171,12 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
         lastIndex = 0;
     }
+
+    /**
+     * Ensures that current capacity does not exceed maximum capacity.
+     * Default Capacity is minimum capacity.
+     * @param capacity
+     */
     private void checkCapacity(int capacity) {
         if (capacity < DEFAULT_CAPACITY) {
             capacity = DEFAULT_CAPACITY;
@@ -157,6 +185,10 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         }
     }
 
+    /**
+     * Returns a copy of the heap array,
+     * @return
+     */
     public T[] toArray(){
         T[] returnArray = Arrays.copyOf(heap, heap.length - 1);
         return returnArray;
