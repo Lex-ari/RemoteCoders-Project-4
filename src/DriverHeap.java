@@ -21,8 +21,8 @@ public class DriverHeap {
 
         System.out.println("Heap built using add method: " + getFirst10(simpleHeap)); //call getFirst10()
         output.write("Heap built using add method: " + getFirst10(simpleHeap) + "\n"); //call getFirst10()
-        System.out.println("Number of swaps in the heap creation: " );
-        output.write("Number of swaps in the heap creation: " + "\n");
+        System.out.println("Number of swaps in the heap creation: " + simpleHeap.getSwaps());
+        output.write("Number of swaps in the heap creation: " + simpleHeap.getSwaps() + "\n");
         for (int i = 0; i < 10; i++){
             simpleHeap.removeMax();
         }
@@ -43,8 +43,8 @@ public class DriverHeap {
 
         System.out.println("Heap built using optimal method: " + getFirst10(optimalHeap)); //call getFirst10()
         output.write("Heap built using optimal method: " + getFirst10(optimalHeap) + "\n"); //call getFirst10()
-        System.out.println("Number of swaps in the heap creation: ");
-        output.write("Number of swaps in the heap creation: " + "\n");
+        System.out.println("Number of swaps in the heap creation: " + optimalHeap.getSwaps());
+        output.write("Number of swaps in the heap creation: " + optimalHeap.getSwaps() + "\n");
         for (int i = 0; i < 10; i++){
             optimalHeap.removeMax();
         }
