@@ -4,7 +4,7 @@ Koki Yamaguchi, Iker Goni, Alex Mariano
 
 Contributions
 
-Koki Yamaguchi: 
+Koki Yamaguchi: Implemented the methods in the maxHeap.java and interface.
 
 Iker Goni: Implemented the optimal constructor for maxheap, debugged, added comments and javadoc comments
 
