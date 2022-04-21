@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class DriverHeap {
 
+
     public static void main(String[] args) throws IOException {
         File dataSorted = new File("src/data_sorted.txt");
         File dataRandom = new File("src/data_random.txt");
@@ -22,7 +23,11 @@ public class DriverHeap {
         doHeapProcedures(classExample3, classExampleTestingtxt);
 
     }
-
+    /**
+     * returns the first 10 values of the max heap
+     * @param heap heap that contains the 10 values
+     * @return the 10 values as one string
+     */
     public static String getFirst10(MaxHeap heap){
         Comparable[] workingArray = heap.toArray();
         String returnString = "";
@@ -37,7 +42,12 @@ public class DriverHeap {
         returnString += "...";
         return returnString;
     }
-
+    /**
+     * converts the values from the inputfile to a maxheap using two different methods, sequential insertions and using the reheap method
+     * @param inputFile file containg the integers
+     * @param outputFile file that contains the first 10 digits from both max heaps and the number of swaps completed in both heaps
+     * @throws IOException
+     */
     public static void doHeapProcedures(File inputFile, File outputFile) throws IOException {
         File data = inputFile;
         FileWriter output = new FileWriter(outputFile, true);
@@ -49,10 +59,10 @@ public class DriverHeap {
         while(textReader.hasNext()){
             //add this to heap using initial method
             Integer i = textReader.nextInt();
-            simpleHeap.add(i);
+            simpleHeap.add(i); // sequential insertion method
         }
         output.write("Heap built using add method: " + getFirst10(simpleHeap) + "\n"); //call getFirst10()
-        output.write("Number of swaps in the heap creation: " + simpleHeap.getSwaps() + "\n");
+        output.write("Number of swaps in the heap creation: " + simpleHeap.getSwaps() + "\n"); // call getSwaps()
         for (int i = 0; i < 10; i++){
             simpleHeap.removeMax();
         }
@@ -66,10 +76,10 @@ public class DriverHeap {
             int j = textReader.nextInt();
             arr2.add(j); //adding element to the array
         }
-        optimalHeap = new MaxHeap(arr2.toArray(new Integer[0]));
+        optimalHeap = new MaxHeap(arr2.toArray(new Integer[0])); // optimal method using constructor with reheap built in
 
         output.write("Heap built using optimal method: " + getFirst10(optimalHeap) + "\n"); //call getFirst10()
-        output.write("Number of swaps in the heap creation: " + optimalHeap.getSwaps() + "\n");
+        output.write("Number of swaps in the heap creation: " + optimalHeap.getSwaps() + "\n"); // getSwaps()
         for (int i = 0; i < 10; i++){
             optimalHeap.removeMax();
         }
