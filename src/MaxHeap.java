@@ -100,6 +100,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
             int rightChildIndex = leftChildIndex + 1;
             if((rightChildIndex <= lastIndex) && heap[rightChildIndex].compareTo(heap[largerChildIndex]) > 0){ // when the rightChild is bigger than largerChild (rightChild > largerChild)
                 largerChildIndex = rightChildIndex;
+                swaps++;
             }if(orphan.compareTo(heap[largerChildIndex]) < 0){ //when rootIndex is larger than largerChild (rootIndex > largerChild)
                 heap[rootIndex] = heap[largerChildIndex];
                 rootIndex = largerChildIndex;
@@ -113,8 +114,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         heap[rootIndex] = orphan;
     }
     public int getSwaps(){
-        int temp = swaps;
-        return temp;
+        return swaps;
     }
 
     @Override
