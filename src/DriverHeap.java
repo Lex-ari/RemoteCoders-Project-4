@@ -27,7 +27,7 @@ public class DriverHeap {
             simpleHeap.removeMax();
         }
 
-        System.out.println ("Heap after 10 removals: " + getFirst10(simpleHeap));
+        System.out.println ("Heap after 10 removals: " + getFirst10(simpleHeap) + "\n");
         output.write("Heap after 10 removals: " + getFirst10(simpleHeap) + "\n");
 
         ArrayList<Integer> arr2 = new ArrayList<Integer>();
@@ -38,7 +38,6 @@ public class DriverHeap {
             int j = textReader.nextInt();
             arr2.add(j); //adding element to the array
         }
-        System.out.println(arr2.size());
         optimalHeap = new MaxHeap(arr2.toArray(new Integer[0]));
 
         System.out.println("Heap built using optimal method: " + getFirst10(optimalHeap)); //call getFirst10()
