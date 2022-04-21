@@ -10,7 +10,7 @@ Iker Goni: Implemented the optimal constructor for maxheap, debugged, added comm
 
 Alex Mariano: Input/Output of DriverHeap.java, Example Testing and Debugging.
 
-Additional Implementations: Generic Data Types for MaxHeap.java
+Additional Implementations: Generic Data Types for MaxHeap.java, Heap interface
 
 Javadoc: https://lex-ari.github.io/RemoteCoders-Project-4/allclasses-index.html
 
