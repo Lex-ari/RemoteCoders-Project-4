@@ -27,11 +27,14 @@ public class DriverHeap {
         Comparable[] workingArray = heap.toArray();
         String returnString = "";
         for (int i = 1; i <= 10; i++){
-            returnString += workingArray[i];
-            if (i < 10){
-                returnString += " ";
+            if (workingArray[i] != null) {
+                returnString += workingArray[i];
+                if (i < 10) {
+                    returnString += " ";
+                }
             }
         }
+        returnString += "...";
         return returnString;
     }
 
