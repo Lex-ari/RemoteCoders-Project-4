@@ -114,9 +114,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements HeapInter
         heap[rootIndex] = orphan;
     }
     public int getSwaps(){
-        int temp = swaps;
-        swaps = 0;
-        return temp;
+        return swaps;
     }
 
     @Override
