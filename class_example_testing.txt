@@ -1,0 +1,36 @@
+
+=====================================================================
+File: src\class_example_1.txt
+
+Heap built using add method: 90 80 60 70 30 20 50 10 40 null
+Number of swaps in the heap creation: 0
+Heap after 10 removals: 10 10 20 10 30 20 50 10 40 null
+Heap built using optimal method: 90 80 60 70 30 20 50 10 40 null
+Number of swaps in the heap creation: 0
+Heap after 10 removals: 10 10 20 10 30 20 50 10 40 null
+
+=====================================================================
+
+=====================================================================
+File: src\class_example_2.txt
+
+Heap built using add method: 90 85 60 70 80 20 50 10 40 30
+Number of swaps in the heap creation: 2
+Heap after 10 removals: 10 10 20 10 30 20 50 10 40 30
+Heap built using optimal method: 90 85 60 70 80 20 50 10 40 30
+Number of swaps in the heap creation: 2
+Heap after 10 removals: 10 10 20 10 30 20 50 10 40 30
+
+=====================================================================
+
+=====================================================================
+File: src\class_example_3.txt
+
+Heap built using add method: 90 40 70 10 20 30 null null null null
+Number of swaps in the heap creation: 4
+Heap after 10 removals: 10 10 10 10 20 30 null null null null
+Heap built using optimal method: 90 40 70 10 20 30 null null null null
+Number of swaps in the heap creation: 4
+Heap after 10 removals: 10 10 10 10 20 30 null null null null
+
+=====================================================================
